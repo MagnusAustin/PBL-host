@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Note Making System</title>
+  </head>
+  <body>
+    <h1>Note Making System</h1>
+    <form>
+      <label for="title">Title:</label><br>
+      <input type="text" id="title" name="title"><br>
+      <label for="note">Note:</label><br>
+      <textarea id="note" name="note"></textarea><br>
+      <input type="submit" value="Save">
+    </form>
+    <hr>
+    <h2>Saved Notes:</h2>
+    <ul id="notes"></ul>
+    <script>
+      function saveNote() {
+        var title = document.getElementById("title").value;
+        var note = document.getElementById("note").value;
+        var noteList = document.getElementById("notes");
+        var newNote = document.createElement("li");
+        var noteTitle = document.createElement("h3");
+        var noteText = document.createElement("p");
+        noteTitle.innerText = title;
+        noteText.innerText = note;
+        newNote.appendChild(noteTitle);
+        newNote.appendChild(noteText);
+        noteList.appendChild(newNote);
+        document.getElementById("title").value = "";
+        document.getElementById("note").value = "";
+        return false;
+      }
+      document.getElementsByTagName("form")[0].onsubmit = saveNote;
+    </script>
+  </body>
+</html>
